@@ -24,9 +24,39 @@
         </div>
     </div>
 
-
-
+    <div class ="row" id="mars-image">
+      <div class = "col-md-8">
+          <h3>Featured Mars Image</h3>
+          <img src = "{mars.img_full_url}" alt ="Mars Image">
+      </div>
+      <div class = "col-md-4">
+              <h4>Current Weather on Mars</h4>
+              <p>{{mars.mrs_wthr_twt}</p>
+              <br>
+              <h4>Mars Facts</h4>
+              <p>{{mars.data | safe}}</p>
+          </div>
   </div>
+  
+  <div class ="row" id="mars-hemispheres">
+      <div class = "col-md-12">
+          <h3><center>Mars Hemispheres</center></h3>
+          {% for hemisphere in mars_data.hemisphere_image_url %}
+              <div class = "col-md-6">
+                  <div class = "thumbnail">
+                      <img src = "{mars.Image_url}">
+                          <h3>{{hemisphere.Title}}</h3>
+                      </div>
+                  </div>
+          {% endfor %}
+              </div>
+      
+      </div>
+  </div>
+  </div>
+  </div>
+</div>
+
   
 </body>
 
