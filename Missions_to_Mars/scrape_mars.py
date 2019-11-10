@@ -125,8 +125,8 @@ def scrape():
         mars_data["hemisphere_image_url"] = hemisph_image_urls
 
     # Close the browser 
-        browser.quit()
+    browser.quit()
 
-        return mars_data
+    return mars_data
    
    
