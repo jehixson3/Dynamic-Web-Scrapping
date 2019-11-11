@@ -61,8 +61,8 @@ def scrape():
     twt_soup = BeautifulSoup(html, 'html.parser')
 
     # Get tweet from BS
-    f_twt = twt_soup.find('p', class_='js-tweet-text').text
-    mrs_wthr_twt = f_twt.strip()
+    f_twt = twt_soup.find('p', class_='js-tweet-text').text.strip()
+    mrs_wthr_twt = f_twt
 
     mars_data["mrs_wthr_twt"] = mrs_wthr_twt
 
@@ -74,11 +74,11 @@ def scrape():
 
     # Rename Columns
     mars_df.columns = ['Fact', 'Value']
-
+    mars_df.set_index('Fact', inplace=True)
     # convert data frame to html
-    data = mars_df.to_html('mars_facts.html')
-
-    mars_data["mars_fact"] = data
+    data = mars_df.to_html() 
+   
+    mars_data["mars_facts"] = data
 
 
     # Mars Hemishperes
@@ -122,7 +122,7 @@ def scrape():
         # Append the retreived information into a list of dictionaries 
         hemisph_image_urls.append({"Title" : title, "Img_url" : img_url})
 
-        mars_data["hemisphere_image_url"] = hemisph_image_urls
+    mars_data["hemisphere_image_url"] = hemisph_image_urls
 
     # Close the browser 
     browser.quit()
