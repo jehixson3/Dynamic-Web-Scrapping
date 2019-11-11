@@ -61,10 +61,12 @@ def scrape():
     twt_soup = BeautifulSoup(html, 'html.parser')
 
     # Get tweet from BS
-    f_twt = twt_soup.find('p', class_='js-tweet-text').text.strip()
+    f_twt = twt_soup.find('p', class_='TweetTextSize').text
     mrs_wthr_twt = f_twt
+    cl_twt = f_twt[:-26]
+    twt = cl_twt.replace("\n", ', ')
 
-    mars_data["mrs_wthr_twt"] = mrs_wthr_twt
+    mars_data["mrs_wthr_twt"] = twt
 
     # Go to URL and scrap Mars Facts
     url = "https://space-facts.com/mars/"
